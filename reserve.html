@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,29 +90,23 @@
 <!-- from enter reservation to either reserve or waitlist -->
 <script type="text/javascript">
 
-var express = require("express");
-var path = require("path");
 
-// Sets up the Express App
-// =============================================================
-var app = express();
-var PORT = process.env.PORT || 3000;
+  // 
+  $("button").on("click", function (event) {
+    event.preventDefault();
+    console.log('clicked')
+    var newReservation = {
+      customerName: $("#reserve-name").val().trim(),
+      phoneNumber: $("#reserve-phone").val().trim(),
+      customerEmail: $("#reserve-email").val().trim(),
+      customerID: $("#reserve-unique-id").val().trim(),
+    };
+  });
 
-// Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-
-// 
-$("button").on("click", function (event) {
-            event.preventDefault();
-            console.log('clicked', $(this).text());
-
-            
-            
-        });
+  $.post("/api/reservations", newReservation)
+    .then(function (data) {
+      console.log("add new reservation", data)
+    }
+    );
 
 </script>
-
-
-
