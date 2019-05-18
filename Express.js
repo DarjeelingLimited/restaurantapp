@@ -37,7 +37,7 @@ app.get("/reserve", function(req, res) {
 });
 
 // Displays all tables
-app.get("/tables", function(req, res) {
+app.get("/api/tables", function(req, res) {
   return res.json(tables);
 });
 
